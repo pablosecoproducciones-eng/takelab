@@ -1,0 +1,18 @@
+# ─────────────────────────────────────────────────────────
+# netlify.toml
+# Agregar esto a tu netlify.toml EXISTENTE (no reemplazar).
+# Si no tenés netlify.toml, crear este archivo en la raíz
+# del proyecto.
+# ─────────────────────────────────────────────────────────
+
+[build]
+  functions = "netlify/functions"
+
+# Cron: ejecuta send-reminders cada 30 minutos
+# Netlify Scheduled Functions requiere plan Pro o superior.
+# Si tenés plan gratuito, usá el webhook externo (ver abajo).
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
+[functions."send-reminders"]
+  schedule = "*/30 * * * *"
